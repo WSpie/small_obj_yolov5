@@ -1,5 +1,9 @@
 # small_obj_yolov5
 
+Since the customers are all Chinese speaking, I did not add English version.
+
+All the bounding boxes in the samples are labeled by hands using https://github.com/tzutalin/labelImg
+
 The train readMe and test readMe are in the repository
 
 These are the outputs of small triangles detection in Flask\
