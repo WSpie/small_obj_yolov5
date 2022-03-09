@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Python Flask File Upload Example</title>
+	<style>
+		h2 {text-align: center}
+		form {text-align: center}
+		li {text-align: center}
+		p {text-align: center}
+		td {text-align: center}
+	</style>
+</head>
+
+<h2>Select an image file to upload</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" id="apiKey" name="api_key" value = "YMSLX_API_KEY">
+	<input type="file" name="file" >
+    <select name='configs'>
+        {% for cfg in config_list %}
+            <option>
+                {{cfg}}
+            </option>
+        {% endfor %}
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="submit" value="Submit">
+
+</form>
+
+<p>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul>
+		  <li>{{ messages[0] }}</li>
+		</ul>
+	  {% endif %}
+	{% endwith %}
+</p>
+
+{% if img_url %}
+	<div>
+		<p>
+			<img src="data:image/png;base64, {{img_url}}">
+		</p>
+	</div>
+{% endif %}
+
+<p>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul>
+		  <li>{{ messages[-1] }}</li>
+		</ul>
+	  {% endif %}
+	{% endwith %}
+</p>
+
+{% if img_url %}
+	<div>
+		<p>
+			<img src="data:image/png;base64, {{processed_img_url}}">
+		</p>
+	</div>
+{% endif %}
+
+{%if box_info%}
+	<p>
+		The information of detected objects are shown below:
+	</p>
+	<table class='box_table' border='1' style='margin-left:auto;margin-right:auto;'>
+		<tbody>
+			{% for box in box_info %}
+				<tr>
+					{% for prop in box%}
+						<td>{{prop}}</td>
+					{% endfor %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endif %}
+
+
+</html>

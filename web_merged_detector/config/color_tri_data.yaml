@@ -1,0 +1,5 @@
+nc: 4
+names: ['b', 'g', 'r', 'y']
+colors: [[0, 0, 255], [0, 255, 0], [255, 0, 0], [255, 255, 0]]
+weights: ./weights/color_tri_yolov5.pt
+img_size: 416

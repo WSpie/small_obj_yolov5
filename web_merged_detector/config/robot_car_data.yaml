@@ -1,0 +1,5 @@
+nc: 1
+names: ['car']
+colors: []
+weights: ./weights/robot_car_yolov5.pt
+img_size: 272
